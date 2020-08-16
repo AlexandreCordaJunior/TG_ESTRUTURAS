@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+<pre>
+            <code>
+<span>void enfileirar(Fila *f, int valor) {</span>
+<span>    No *novoNo = (No *) malloc(sizeof(No));</span>
+<span>    novoNo->valor = valor;</span>
+<span>    novoNo->proximo = NULL;</span>
+<span></span>
+<span>    if(f->cabeca == f->cauda && f->cabeca == NULL) {</span>
+<span>        f->cabeca = f->cauda = novoNo;</span>
+<span>    }</span>
+<span>    else{</span>
+<span>        f->cauda->proximo = novoNo;</span>
+<span>        f->cauda = novoNo;</span>
+<span>    }</span>
+<span>}</span>
+            </code>
+        </pre>
+</body>
+</html>

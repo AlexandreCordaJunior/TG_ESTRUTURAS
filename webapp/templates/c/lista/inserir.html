@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+<pre>
+            <code>
+<span>void inserir(Lista *l, int valor, int indice) {</span>
+<span>    if(indice > l->tamanho){</span>
+<span>        printf("Não foi possível inserir, pois a lista tem %d elementos\n", l->tamanho);</span>
+<span>        return;</span>
+<span>    }</span>
+<span>    No *novoValor = (No *) malloc(sizeof(No));</span>
+<span>    novoValor->valor = valor;</span>
+<span></span>
+<span>    No *anterior = NULL;</span>
+<span>    No *atual = l->topo;</span>
+<span>    for(int i = 0; i < indice; i++){</span>
+<span>        anterior = atual;</span>
+<span>        atual = atual->proximo;</span>
+<span>    }</span>
+<span>    if(anterior == NULL){</span>
+<span>        novoValor->proximo = atual;</span>
+<span>        l->topo = novoValor;</span>
+<span>    }</span>
+<span>    else{</span>
+<span>        novoValor->proximo = atual;</span>
+<span>        anterior->proximo = novoValor;</span>
+<span>    }</span>
+<span>    l->tamanho++;</span>
+<span>}</span>
+
+            </code>
+        </pre>
+</body>
+</html>

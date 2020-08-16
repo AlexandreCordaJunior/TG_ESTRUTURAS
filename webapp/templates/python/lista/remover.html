@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<pre>
+            <code>
+<span>def remover(self, indice):</span>
+<span>    if(self.topo == None):</span>
+<span>        print("Não pode retirar um elemento de uma lista vazia")</span>
+<span>        return</span>
+<span></span>
+<span>    if self.tamanho < indice:</span>
+<span>        print("Erro ao tentar retirar um elemento inexistente de uma lista");</span>
+<span>        return</span>
+<span></span>
+<span>    anterior = None</span>
+<span>    atual = self.topo</span>
+<span>    for i in range(indice):</span>
+<span>        anterior = atual</span>
+<span>        atual = atual.proximo</span>
+<span></span>
+<span>    temporario = atual</span>
+<span>    valor = temporario.valor</span>
+<span></span>
+<span>    if anterior == None:</span>
+<span>        self.topo = self.topo.proximo</span>
+<span>    else:</span>
+<span>        anterior.proximo = atual.proximo</span>
+
+            </code>
+        </pre>
+</body>
+</html>

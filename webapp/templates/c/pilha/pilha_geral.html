@@ -1,0 +1,59 @@
+<html>
+<head>
+</head>
+<body>
+<pre>
+            <code>
+<span>#include &lt;stdio.h&gt;</span>
+<span>#include &lt;stdlib.h&gt;</span>
+<span></span>
+<span>struct no {</span>
+<span>    int valor;</span>
+<span>    struct no *proximo;</span>
+<span>};</span>
+<span></span>
+<span>typedef struct no No;</span>
+<span></span>
+<span>struct pilha{</span>
+<span>    No *topo;</span>
+<span>};</span>
+<span></span>
+<span>typedef struct pilha Pilha;</span>
+<span></span>
+<span>Pilha *criarPilha() {</span>
+<span>    Pilha *p = (Pilha *) malloc(sizeof(Pilha));</span>
+<span>    p->topo = NULL;</span>
+<span>}</span>
+<span></span>
+<span>void empilhar(Pilha *p, int valor){</span>
+<span>    No *novoNo = (No *) malloc(sizeof(No));</span>
+<span>    novoNo->valor = valor;</span>
+<span>    novoNo->proximo = p->topo;</span>
+<span>    p->topo = novoNo;</span>
+<span>}</span>
+<span></span>
+<span>void desempilhar(Pilha *p){</span>
+<span>    if(p->topo == NULL){</span>
+<span>        printf("Erro ao tentar retirar um elemento de uma pilha vazia\n");</span>
+<span>    }</span>
+<span>    No *temporario = p->topo;</span>
+<span>    p->topo = p->topo->proximo;</span>
+<span>    int valor = temporario->valor;</span>
+<span>    free(temporario);</span>
+<span>}</span>
+<span></span>
+<span>void printAll(Pilha *p){</span>
+<span>    No *atual = p->topo;</span>
+<span>    while(atual != NULL){</span>
+<span>        printf("%d ", atual->valor);</span>
+<span>        atual = atual->proximo;</span>
+<span>    }</span>
+<span>    printf("\n");</span>
+<span>}</span>
+<span></span>
+<span>int main() {</span>
+<span>}</span>
+            </code>
+        </pre>
+</body>
+</html>

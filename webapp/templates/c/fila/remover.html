@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+<pre>
+            <code>
+<span>void desenfileirar(Fila *f){</span>
+<span>    if(f->cabeca == f->cauda && f->cabeca == NULL){</span>
+<span>        printf("Erro ao tentar retirar um elemento de uma fila vazia\n");</span>
+<span>        return;</span>
+<span>    }</span>
+<span>    No *temporario = f->cabeca;</span>
+<span>    if(f->cabeca == f->cauda){</span>
+<span>        f->cabeca = f->cauda = NULL;</span>
+<span>    }</span>
+<span>    else{</span>
+<span>        f->cabeca = f->cabeca->proximo;</span>
+<span>    }</span>
+<span>    free(temporario);</span>
+<span>}</span>
+            </code>
+        </pre>
+</body>
+</html>

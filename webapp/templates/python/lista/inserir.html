@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+<pre>
+            <code>
+<span>def inserir(self, valor, indice):</span>
+<span>    if indice > self.tamanho:</span>
+<span>        print("Não foi possível inserir, pois a lista tem " + str(self.tamanho) + " elementos")</span>
+<span>        return</span>
+<span></span>
+<span>    novo = No(valor, None)</span>
+<span>    anterior = None</span>
+<span>    atual = self.topo</span>
+<span></span>
+<span>    for i in range(indice):</span>
+<span>        anterior = atual</span>
+<span>        atual = atual.proximo</span>
+<span></span>
+<span>    if anterior == None:</span>
+<span>        novo.proximo = atual</span>
+<span>        self.topo = novo</span>
+<span>    else:</span>
+<span>        novo.proximo = atual</span>
+<span>        anterior.proximo = novo</span>
+<span>    self.tamanho += 1</span>
+            </code>
+        </pre>
+</body>
+</html>
