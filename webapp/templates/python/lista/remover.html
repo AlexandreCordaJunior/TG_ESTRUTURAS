@@ -9,7 +9,7 @@
 <span>        print("Não pode retirar um elemento de uma lista vazia")</span>
 <span>        return</span>
 <span></span>
-<span>    if self.tamanho < indice:</span>
+<span>    if self.tamanho < indice or indice < 0:</span>
 <span>        print("Erro ao tentar retirar um elemento inexistente de uma lista");</span>
 <span>        return</span>
 <span></span>

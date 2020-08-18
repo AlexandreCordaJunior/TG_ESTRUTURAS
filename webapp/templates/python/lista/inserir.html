@@ -5,7 +5,7 @@
 <pre>
             <code>
 <span>def inserir(self, valor, indice):</span>
-<span>    if indice > self.tamanho:</span>
+<span>    if indice > self.tamanho or indice < 0:</span>
 <span>        print("Não foi possível inserir, pois a lista tem " + str(self.tamanho) + " elementos")</span>
 <span>        return</span>
 <span></span>

@@ -16,7 +16,7 @@
 <span>        self.tamanho = 0</span>
 <span></span>
 <span>    def inserir(self, valor, indice):</span>
-<span>        if indice > self.tamanho:</span>
+<span>        if indice > self.tamanho or indice < 0:</span>
 <span>            print("Não foi possível inserir, pois a lista tem " + str(self.tamanho) + " elementos")</span>
 <span>            return</span>
 <span></span>
@@ -41,7 +41,7 @@
 <span>            print("Não pode retirar um elemento de uma lista vazia")</span>
 <span>            return</span>
 <span></span>
-<span>        if self.tamanho < indice:</span>
+<span>        if self.tamanho < indice or indice < 0:</span>
 <span>            print("Erro ao tentar retirar um elemento inexistente de uma lista");</span>
 <span>            return</span>
 <span></span>

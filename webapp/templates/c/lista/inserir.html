@@ -5,7 +5,7 @@
 <pre>
             <code>
 <span>void inserir(Lista *l, int valor, int indice) {</span>
-<span>    if(indice > l->tamanho){</span>
+<span>    if(indice > l->tamanho || indice < 0){</span>
 <span>        printf("Não foi possível inserir, pois a lista tem %d elementos\n", l->tamanho);</span>
 <span>        return;</span>
 <span>    }</span>
