@@ -79,7 +79,7 @@ function add(velocidade, animation) {
                 $('<span>', {
                     html: 'Head', id: 'head',
                     css: {
-                        color: 'red',
+                        color: '#EA2027',
                         fontWeight: 'bold',
                         fontSize: '0.9rem',
                         position: 'absolute',
@@ -94,7 +94,7 @@ function add(velocidade, animation) {
                 $('<span>', {
                     html: 'Tail', id: 'tail',
                     css: {
-                        color: 'red',
+                        color: '#EA2027',
                         fontWeight: 'bold',
                         fontSize: '0.9rem',
                         position: 'absolute',
