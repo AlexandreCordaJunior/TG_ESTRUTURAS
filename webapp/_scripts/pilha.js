@@ -1,16 +1,16 @@
 let lastPage = `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`;
 
 function destacaCodigo(tempo, vetNum) {
-    return new Promise(function(fResolve){
+    return new Promise(function (fResolve) {
         let children = document.getElementsByTagName("code")[0].children;
 
         let qtdNum = vetNum.length;
-        for(let i = 0; i < qtdNum; i++) {
+        for (let i = 0; i < qtdNum; i++) {
             setTimeout(() => {
                 children[vetNum[i]].classList.add("destaque");
                 setTimeout(() => {
                     children[vetNum[i]].classList.toggle("destaque");
-                    if(i === qtdNum - 1) {
+                    if (i === qtdNum - 1) {
                         fResolve();
                     }
                 }, tempo / 3);
@@ -41,10 +41,10 @@ function add(velocidade, animation) {
     }
 
     const linguagem = $("#linguagem").val();
-    if(linguagem === "c") {
+    if (linguagem === "c") {
         destacaCodigo(velocidade, [1, 2, 3, 4]);
     }
-    else{
+    else {
         destacaCodigo(velocidade, [1, 2])
     }
 
@@ -75,6 +75,38 @@ function add(velocidade, animation) {
                 }
             });
 
+            if (!document.getElementById('head')) {
+                $('<span>', {
+                    html: 'Head', id: 'head',
+                    css: {
+                        color: 'red',
+                        fontWeight: 'bold',
+                        fontSize: '0.9rem',
+                        position: 'absolute',
+                        left: '50px'
+                    }
+                }).appendTo('#pilha > div:first-child').hide().fadeIn();
+            } else {
+                $('#head').appendTo('#pilha > div:first-child').hide().fadeIn();
+            }
+
+            if (!document.getElementById('tail')) {
+                $('<span>', {
+                    html: 'Tail', id: 'tail',
+                    css: {
+                        color: 'red',
+                        fontWeight: 'bold',
+                        fontSize: '0.9rem',
+                        position: 'absolute',
+                        left: '95px'
+                    }
+                }).appendTo('#pilha > div:last-child').hide().fadeIn();
+            } else if ($('#pilha > div').length == 2) {
+                $('#tail').css({
+                    left: '50px'
+                }).appendTo('#pilha > div:last-child').hide().fadeIn();
+            }
+
             $('#numero').prop('disabled', false);
             $('#adicionar').prop('disabled', false);
             $('#remover').prop('disabled', false);
@@ -93,10 +125,10 @@ async function remove(velocidade, animation) {
     const linguagem = $("#linguagem").val();
 
     if ($('#pilha > div').length == 0) {
-        if(linguagem === "c") {
+        if (linguagem === "c") {
             await destacaCodigo(velocidade, [1, 2, 3]);
         }
-        else{
+        else {
             await destacaCodigo(velocidade, [1, 2, 3])
         }
         alert('ERRO: A pilha já está vazia.');
@@ -112,6 +144,19 @@ async function remove(velocidade, animation) {
         start: () => {
             animation = true;
 
+            var length = $('#pilha > div').length;
+            if (length == 1) {
+                $('#head').remove();
+                $('#tail').remove();
+            } else if (length == 2) {
+                $('#tail').css({
+                    left: '95px'
+                }).appendTo('#pilha > div:last-child').hide().fadeIn();
+                $('#head').appendTo(`#pilha > div:nth-child(2)`).hide().fadeIn();
+            } else {
+                $('#head').appendTo(`#pilha > div:nth-child(2)`).hide().fadeIn();
+            }
+
             $('#pilha > div').connections('remove');
 
             $('#numero').val('');
@@ -121,10 +166,10 @@ async function remove(velocidade, animation) {
             $('#limpar').prop('disabled', true);
             $('#velocidade').prop('disabled', true);
 
-            if(linguagem === "c") {
+            if (linguagem === "c") {
                 destacaCodigo(velocidade, [4, 5, 6, 7]);
             }
-            else{
+            else {
                 destacaCodigo(velocidade, [5, 6, 7])
             }
         },
@@ -168,19 +213,19 @@ $('document').ready(() => {
     $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/pilha_geral.html`);
 
     $("#linguagem").change(() => {
-        if(lastPage.includes("inserir")) {
-            if(lastPage !== `templates/${$("#linguagem").val()}/pilha/inserir.html`) {
+        if (lastPage.includes("inserir")) {
+            if (lastPage !== `templates/${$("#linguagem").val()}/pilha/inserir.html`) {
                 $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/inserir.html`);
                 lastPage = `templates/${$("#linguagem").val()}/pilha/inserir.html`;
             }
-        } else if(lastPage.includes("remover")) {
-            if(lastPage !== `templates/${$("#linguagem").val()}/pilha/remover.html`) {
+        } else if (lastPage.includes("remover")) {
+            if (lastPage !== `templates/${$("#linguagem").val()}/pilha/remover.html`) {
                 $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/remover.html`);
                 lastPage = `templates/${$("#linguagem").val()}/pilha/remover.html`;
             }
         }
-        else{
-            if(lastPage !== `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`) {
+        else {
+            if (lastPage !== `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`) {
                 $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/pilha_geral.html`);
                 lastPage = `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`;
             }
@@ -189,37 +234,37 @@ $('document').ready(() => {
 
     //adicionar, remover, limpar
     $('#adicionar').click(() => {
-        if(lastPage !== `templates/${$("#linguagem").val()}/pilha/inserir.html`) {
+        if (lastPage !== `templates/${$("#linguagem").val()}/pilha/inserir.html`) {
             $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/inserir.html`, undefined, () => {
                 add(velocidade, animation);
             });
             lastPage = `templates/${$("#linguagem").val()}/pilha/inserir.html`;
         }
-        else{
+        else {
             add(velocidade, animation);
         }
     });
 
     $('#remover').click(() => {
-        if(lastPage !== `templates/${$("#linguagem").val()}/pilha/remover.html`) {
+        if (lastPage !== `templates/${$("#linguagem").val()}/pilha/remover.html`) {
             $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/remover.html`, undefined, () => {
                 remove(velocidade, animation);
             });
             lastPage = `templates/${$("#linguagem").val()}/pilha/remover.html`;
         }
-        else{
+        else {
             remove(velocidade, animation);
         }
     });
 
     $("#limpar").click(() => {
-        if(lastPage !== `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`) {
+        if (lastPage !== `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`) {
             $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/pilha_geral.html`, undefined, () => {
                 clean();
             });
             lastPage = `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`;
         }
-        else{
+        else {
             clean();
         }
     });
@@ -238,7 +283,7 @@ $('document').ready(() => {
 
     /* Caso mude o tamanho da janela do navegador */
     $(window).resize(() => {
-        if(animation == false) {
+        if (animation == false) {
             $('#pilha > div').connections('remove');
 
             $('#pilha > div:first-child').connections({
