@@ -1,16 +1,16 @@
 let lastPage = `templates/${$("#linguagem").val()}/fila/fila_geral.html`;
 
 function destacaCodigo(tempo, vetNum) {
-    return new Promise(function(fResolve){
+    return new Promise(function (fResolve) {
         let children = document.getElementsByTagName("code")[0].children;
 
         let qtdNum = vetNum.length;
-        for(let i = 0; i < qtdNum; i++) {
+        for (let i = 0; i < qtdNum; i++) {
             setTimeout(() => {
                 children[vetNum[i]].classList.add("destaque");
                 setTimeout(() => {
                     children[vetNum[i]].classList.toggle("destaque");
-                    if(i === qtdNum - 1) {
+                    if (i === qtdNum - 1) {
                         fResolve();
                     }
                 }, tempo / 3);
@@ -40,10 +40,10 @@ async function add(velocidade, animation) {
     }
     let promise;
 
-    if($("#linguagem").val() === "c") {
+    if ($("#linguagem").val() === "c") {
         promise = destacaCodigo(velocidade, [1, 2, 3]);
     }
-    else{
+    else {
         promise = destacaCodigo(velocidade, [1]);
     }
     $('#numero').prop('disabled', true);
@@ -53,19 +53,19 @@ async function add(velocidade, animation) {
     $('#velocidade').prop('disabled', true);
 
     await promise;
-    if($("#fila")[0].children.length === 0) {
-        if($("#linguagem").val() === "c") {
+    if ($("#fila")[0].children.length === 0) {
+        if ($("#linguagem").val() === "c") {
             destacaCodigo(velocidade, [5, 6, 7]);
         }
-        else{
+        else {
             destacaCodigo(velocidade, [3, 4]);
         }
     }
-    else{
-        if($("#linguagem").val() === "c") {
+    else {
+        if ($("#linguagem").val() === "c") {
             destacaCodigo(velocidade, [5, 8, 9, 10, 11]);
         }
-        else{
+        else {
             destacaCodigo(velocidade, [3, 5, 6, 7]);
         }
     }
@@ -87,6 +87,41 @@ async function add(velocidade, animation) {
                     'border': '3px solid #27ae60'
                 }
             });
+
+            if (!document.getElementById('head')) {
+                $('<span>', {
+                    html: 'Head', id: 'head',
+                    css: {
+                        color: '#EA2027',
+                        fontWeight: 'bold',
+                        fontSize: '0.9rem',
+                        position: 'absolute',
+                        top: '40px',
+                        left: '2px'
+                    }
+                }).appendTo('#fila > div:first-child').hide().fadeIn();
+            } else {
+                $('#head').appendTo('#fila > div:first-child').hide().fadeIn();
+            }
+
+            if (!document.getElementById('tail')) {
+                $('<span>', {
+                    html: 'Tail', id: 'tail',
+                    css: {
+                        color: '#EA2027',
+                        fontWeight: 'bold',
+                        fontSize: '0.9rem',
+                        position: 'absolute',
+                        top: '65px',
+                        left: '8px'
+                    }
+                }).appendTo('#fila > div:last-child').hide().fadeIn();
+            } else if ($('#fila > div').length >= 2) {
+                $('#tail').css({
+                    top: '40px',
+                    left: '8px'
+                }).appendTo('#fila > div:last-child').hide().fadeIn();
+            }
 
             $('#numero').prop('disabled', false);
             $('#adicionar').prop('disabled', false);
@@ -110,19 +145,19 @@ async function remove(velocidade, animation) {
         return 0;
     }
 
-    if($("#fila")[0].children.length === 1) {
-        if(linguagem === "c") {
+    if ($("#fila")[0].children.length === 1) {
+        if (linguagem === "c") {
             destacaCodigo(velocidade, [5, 6, 7, 8, 12]);
         }
-        else{
+        else {
             destacaCodigo(velocidade, [5, 6]);
         }
     }
-    else{
-        if(linguagem === "c") {
+    else {
+        if (linguagem === "c") {
             destacaCodigo(velocidade, [5, 6, 9, 10, 11, 12]);
         }
-        else{
+        else {
             destacaCodigo(velocidade, [5, 7, 8]);
         }
     }
@@ -134,6 +169,20 @@ async function remove(velocidade, animation) {
         duration: velocidade,
         start: () => {
             animation = true;
+
+            var length = $('#fila > div').length;
+            if (length == 1) {
+                $('#head').remove();
+                $('#tail').remove();
+            } else if (length == 2) {
+                $('#tail').css({
+                    top: '65px',
+                    left: '8px'
+                }).appendTo('#fila > div:last-child').hide().fadeIn();
+                $('#head').appendTo(`#fila > div:nth-child(2)`).hide().fadeIn();
+            } else {
+                $('#head').appendTo(`#fila > div:nth-child(2)`).hide().fadeIn();
+            }
 
             $('#fila > div').connections('remove');
 
@@ -182,19 +231,19 @@ function clean() {
 $('document').ready(() => {
     $("#codigo").load(`templates/${$("#linguagem").val()}/fila/fila_geral.html`);
     $("#linguagem").change(() => {
-        if(lastPage.includes("inserir")) {
-            if(lastPage !== `templates/${$("#linguagem").val()}/fila/inserir.html`) {
+        if (lastPage.includes("inserir")) {
+            if (lastPage !== `templates/${$("#linguagem").val()}/fila/inserir.html`) {
                 $("#codigo").load(`templates/${$("#linguagem").val()}/fila/inserir.html`);
                 lastPage = `templates/${$("#linguagem").val()}/fila/inserir.html`;
             }
-        } else if(lastPage.includes("remover")) {
-            if(lastPage !== `templates/${$("#linguagem").val()}/fila/remover.html`) {
+        } else if (lastPage.includes("remover")) {
+            if (lastPage !== `templates/${$("#linguagem").val()}/fila/remover.html`) {
                 $("#codigo").load(`templates/${$("#linguagem").val()}/fila/remover.html`);
                 lastPage = `templates/${$("#linguagem").val()}/fila/remover.html`;
             }
         }
-        else{
-            if(lastPage !== `templates/${$("#linguagem").val()}/fila/fila_geral.html`) {
+        else {
+            if (lastPage !== `templates/${$("#linguagem").val()}/fila/fila_geral.html`) {
                 $("#codigo").load(`templates/${$("#linguagem").val()}/fila/fila_geral.html`);
                 lastPage = `templates/${$("#linguagem").val()}/fila/fila_geral.html`;
             }
@@ -210,44 +259,44 @@ $('document').ready(() => {
     });
 
     $('#adicionar').click(() => {
-        if(lastPage !== `templates/${$("#linguagem").val()}/fila/inserir.html`) {
+        if (lastPage !== `templates/${$("#linguagem").val()}/fila/inserir.html`) {
             $("#codigo").load(`templates/${$("#linguagem").val()}/fila/inserir.html`, undefined, () => {
                 add(velocidade, animation);
             });
             lastPage = `templates/${$("#linguagem").val()}/fila/inserir.html`;
         }
-        else{
+        else {
             add(velocidade, animation);
         }
     });
 
     $('#remover').click(() => {
-        if(lastPage !== `templates/${$("#linguagem").val()}/fila/remover.html`) {
+        if (lastPage !== `templates/${$("#linguagem").val()}/fila/remover.html`) {
             $("#codigo").load(`templates/${$("#linguagem").val()}/fila/remover.html`, undefined, () => {
                 remove(velocidade, animation);
             });
             lastPage = `templates/${$("#linguagem").val()}/fila/remover.html`;
         }
-        else{
+        else {
             remove(velocidade, animation);
         }
     });
 
     $("#limpar").click(() => {
-        if(lastPage !== `templates/${$("#linguagem").val()}/fila/fila_geral.html`) {
+        if (lastPage !== `templates/${$("#linguagem").val()}/fila/fila_geral.html`) {
             $("#codigo").load(`templates/${$("#linguagem").val()}/fila/fila_geral.html`, undefined, () => {
                 clean();
             });
             lastPage = `templates/${$("#linguagem").val()}/fila/fila_geral.html`;
         }
-        else{
+        else {
             clean();
         }
     });
 
     /* Caso mude o tamanho da janela do navegador */
     $(window).resize(() => {
-        if(animation == false) {
+        if (animation == false) {
             $('#fila > div').connections('remove');
 
             $('#fila > div:first-child').connections({
