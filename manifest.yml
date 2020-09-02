@@ -1,0 +1,6 @@
+---
+applications:
+  - name: tg_estruturas
+    memory: 1024M
+    instances: 1
+    random-route: true

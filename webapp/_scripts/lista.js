@@ -73,7 +73,34 @@ async function add(velocidade, animation) {
         return 0;
     }
 
+    if ($('#indice').val() > $('#lista > div').length) {
+        if(linguagem === "c") {
+            await destacaCodigo(velocidade, [1, 2, 3, 4])
+        }
+        else {
+            await destacaCodigo(velocidade, [1, 2, 3])
+        }
+        alert(`ERRO: O próximo índice deve ser o ${$('#lista > div').length}.`);
+        $('#indice').val('');
+        $('#indice').focus();
+        return 0;
+    }
+    await destacaCodigo(velocidade, [1]);
+
+    if(linguagem === "c") {
+        await destacaCodigo(velocidade, [5, 6, 8, 9])
+    }
+    else {
+        await destacaCodigo(velocidade, [5, 6, 7])
+    }
+
     if ($('#indice').val() == 0) {
+        if(linguagem === "c") {
+            await destacaCodigo(velocidade, [10])
+        }
+        else {
+            await destacaCodigo(velocidade, [9])
+        }
         $('#indice').prop('disabled', true);
         $('#numero').prop('disabled', true);
         $('#adicionar').prop('disabled', true);
@@ -93,7 +120,13 @@ async function add(velocidade, animation) {
             start: () => {
                 animation = true;
             },
-            complete: () => {
+            complete: async () => {
+                if(linguagem === "c") {
+                    await destacaCodigo(velocidade, [14, 15, 16, 17, 22])
+                }
+                else {
+                    await destacaCodigo(velocidade, [13, 14, 15, 19])
+                }
                 $('#lista > div:first-child').connections({
                     to: $('#lista > div'),
                     css: {
@@ -119,11 +152,20 @@ async function add(velocidade, animation) {
     }
 
     if ($('#indice').val() != 0) {
-        if ($('#indice').val() > $('#lista > div').length) {
-            alert(`ERRO: O próximo índice deve ser o ${$('#lista > div').length}.`);
-            $('#indice').val('');
-            $('#indice').focus();
-            return 0;
+
+        for(let i = 0; i < $('#indice').val(); i++) {
+            if(linguagem === "c") {
+                await destacaCodigo(velocidade, [10, 11, 12, 13]);
+            }
+            else {
+                await destacaCodigo(velocidade, [9, 10, 11]);
+            }
+        }
+        if(linguagem === "c") {
+            await destacaCodigo(velocidade, [10]);
+        }
+        else {
+            await destacaCodigo(velocidade, [9]);
         }
 
         $('#indice').prop('disabled', true);
@@ -145,7 +187,14 @@ async function add(velocidade, animation) {
             start: () => {
                 animation = true;
             },
-            complete: () => {
+            complete: async () => {
+                if(linguagem === "c") {
+                    await destacaCodigo(velocidade, [14, 18, 19, 20, 21, 22]);
+                }
+                else {
+                    await destacaCodigo(velocidade, [13, 16, 17, 18, 19]);
+                }
+
                 $('#lista > div:first-child').connections({
                     to: $('#lista > div'),
                     css: {
