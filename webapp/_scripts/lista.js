@@ -220,11 +220,22 @@ async function add(velocidade, animation) {
     }
 }
 
-function remove(velocidade, animation) {
+async function remove(velocidade, animation) {
+    const linguagem = $("#linguagem").val();
+
     if ($('#lista > div').length == 0) {
+        if(linguagem === "c") {
+            await destacaCodigo(velocidade, [1, 2, 3, 4])
+        }
+        else {
+            await destacaCodigo(velocidade, [1, 2, 3])
+        }
         alert('ERRO: A lista já está vázia.');
         return 0;
     }
+
+    await destacaCodigo(velocidade, [1])
+
 
     if ($('#indice').val() == '') {
         alert('ERRO: O campo índice está vazio.');
@@ -235,13 +246,34 @@ function remove(velocidade, animation) {
     var indice = Number($('#indice').val()) + 1;
 
     if (indice < 1 || indice > $('#lista > div').length) {
+        if(linguagem === "c") {
+            await destacaCodigo(velocidade, [5, 6, 7, 8])
+        }
+        else {
+            await destacaCodigo(velocidade, [5, 6, 7])
+        }
         alert('ERRO: O índice digitado não está na lista.');
         $('#indice').val('');
         $('#indice').focus();
         return 0;
     }
 
+    await destacaCodigo(velocidade, [5]);
+
     $('#lista > div').connections('remove');
+
+    await destacaCodigo(velocidade, [9, 10]);
+
+    for(let i = 0; i < $('#indice').val(); i++) {
+        if(linguagem === "c") {
+            await destacaCodigo(velocidade, [11, 12, 13, 14])
+        }
+        else {
+            await destacaCodigo(velocidade, [11, 12, 13])
+        }
+    }
+
+    await destacaCodigo(velocidade, [11]);
 
     $(`#lista > div:nth-child(${indice})`).css({
         'position': 'relative',
@@ -250,7 +282,7 @@ function remove(velocidade, animation) {
         'top': '30px'
     }, {
         duration: velocidade,
-        start: () => {
+        start:  () => {
             $('#indice').prop('disabled', true);
             $('#numero').prop('disabled', true);
             $('#adicionar').prop('disabled', true);
@@ -260,7 +292,32 @@ function remove(velocidade, animation) {
 
             animation = true;
         },
-        complete: () => {
+        complete: async () => {
+            if(linguagem === "c") {
+                await destacaCodigo(velocidade, [16]);
+            }
+
+            if(parseInt($('#indice').val(), 10) === 0) {
+                if(linguagem === "c") {
+                    await destacaCodigo(velocidade, [18, 19, 20, 21]);
+                }
+                else {
+                    await destacaCodigo(velocidade, [15, 16, 17]);
+                }
+            }
+            else{
+                if(linguagem === "c") {
+                    await destacaCodigo(velocidade, [18, 21, 22, 23]);
+                }
+                else {
+                    await destacaCodigo(velocidade, [15, 17, 18]);
+                }
+            }
+
+            if(linguagem === "c") {
+                await destacaCodigo(velocidade, [24]);
+            }
+
             $(`#lista > div:nth-child(${indice})`).remove();
 
             $('#lista > div:first-child').connections({
@@ -358,11 +415,11 @@ $('document').ready(() => {
         }
     });
 
-    var velocidade = 1000; // Velocidade padrão (1 segundo)
+    var velocidade = 250; // Velocidade padrão (1 segundo)
     var animation = false;
 
     $('#velocidade').change(() => {
-        velocidade = $('#velocidade').val() * -1000;
+        velocidade = $('#velocidade').val() * -250;
         /* $('#txtvelocidade').text($('#velocidade').val() * -1); */
     });
 
