@@ -19,9 +19,7 @@ class Pilha:
 
         temporario = self.topo
         self.topo = self.topo.proximo
-        valor = temporario.valor
         
-
 
 def printAll(fila):
     atual = fila.topo
@@ -32,10 +30,15 @@ def printAll(fila):
 
 
 p = Pilha()
-for i in range(10):
-    p.empilhar(i)
-    printAll(p)
-
-for i in range(10):
-    printAll(p)
-    p.desempilhar()
+p.empilhar(5)
+printAll(f)
+p.empilhar(10)
+printAll(f)
+p.empilhar(15)
+printAll(f)
+p.empilhar(20)
+printAll(f)
+p.desempilhar()
+printAll(f)
+p.desempilhar()
+printAll(f)

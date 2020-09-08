@@ -46,7 +46,6 @@ class Lista:
             atual = atual.proximo
 
         temporario = atual
-        valor = temporario.valor
 
         if anterior == None:
             self.topo = self.topo.proximo
@@ -63,28 +62,15 @@ def printAll(fila):
 
 
 l = Lista()
-l.inserir(15, 1)
+l.inserir(5, 0)
 printAll(l)
-l.inserir(16, 0)
+l.inserir(10, 0)
 printAll(l)
-l.inserir(151, 1)
+l.inserir(15, 2)
 printAll(l)
-l.inserir(152, 0)
-printAll(l)
-l.inserir(153, 1)
-printAll(l)
-l.inserir(154, 1)
-printAll(l)
-l.inserir(155, 1)
-printAll(l)
-
-l.remover(1)
-printAll(l)
-l.remover(1)
+l.inserir(20, 1)
 printAll(l)
 l.remover(1)
 printAll(l)
 l.remover(0)
-printAll(l)
-l.remover(1)
 printAll(l)

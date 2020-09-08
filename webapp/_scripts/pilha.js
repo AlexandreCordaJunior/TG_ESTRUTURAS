@@ -1,5 +1,3 @@
-let lastPage = `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`;
-
 function destacaCodigo(tempo, vetNum) {
     return new Promise(function (fResolve) {
         let children = document.getElementsByTagName("code")[0].children;
@@ -38,14 +36,6 @@ function add(velocidade, animation) {
         alert('ERRO: Pilha cheia.');
         $('#numero').val('');
         return 0;
-    }
-
-    const linguagem = $("#linguagem").val();
-    if (linguagem === "c") {
-        destacaCodigo(velocidade, [1, 2, 3, 4]);
-    }
-    else {
-        destacaCodigo(velocidade, [1, 2])
     }
 
     $('#numero').prop('disabled', true);
@@ -122,15 +112,8 @@ function add(velocidade, animation) {
 }
 
 async function remove(velocidade, animation) {
-    const linguagem = $("#linguagem").val();
 
     if ($('#pilha > div').length == 0) {
-        if (linguagem === "c") {
-            await destacaCodigo(velocidade, [1, 2, 3]);
-        }
-        else {
-            await destacaCodigo(velocidade, [1, 2, 3])
-        }
         alert('ERRO: A pilha já está vazia.');
         return 0;
     }
@@ -165,13 +148,6 @@ async function remove(velocidade, animation) {
             $('#remover').prop('disabled', true);
             $('#limpar').prop('disabled', true);
             $('#velocidade').prop('disabled', true);
-
-            if (linguagem === "c") {
-                destacaCodigo(velocidade, [4, 5, 6, 7]);
-            }
-            else {
-                destacaCodigo(velocidade, [5, 6, 7])
-            }
         },
         complete: () => {
             $('#pilha > div:first-child').fadeOut(() => {
@@ -210,63 +186,21 @@ function clean() {
 
 $('document').ready(() => {
 
-    $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/pilha_geral.html`);
-
     $("#linguagem").change(() => {
-        if (lastPage.includes("inserir")) {
-            if (lastPage !== `templates/${$("#linguagem").val()}/pilha/inserir.html`) {
-                $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/inserir.html`);
-                lastPage = `templates/${$("#linguagem").val()}/pilha/inserir.html`;
-            }
-        } else if (lastPage.includes("remover")) {
-            if (lastPage !== `templates/${$("#linguagem").val()}/pilha/remover.html`) {
-                $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/remover.html`);
-                lastPage = `templates/${$("#linguagem").val()}/pilha/remover.html`;
-            }
-        }
-        else {
-            if (lastPage !== `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`) {
-                $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/pilha_geral.html`);
-                lastPage = `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`;
-            }
-        }
+
     });
 
     //adicionar, remover, limpar
     $('#adicionar').click(() => {
-        if (lastPage !== `templates/${$("#linguagem").val()}/pilha/inserir.html`) {
-            $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/inserir.html`, undefined, () => {
-                add(velocidade, animation);
-            });
-            lastPage = `templates/${$("#linguagem").val()}/pilha/inserir.html`;
-        }
-        else {
-            add(velocidade, animation);
-        }
+        add(velocidade, animation);
     });
 
     $('#remover').click(() => {
-        if (lastPage !== `templates/${$("#linguagem").val()}/pilha/remover.html`) {
-            $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/remover.html`, undefined, () => {
-                remove(velocidade, animation);
-            });
-            lastPage = `templates/${$("#linguagem").val()}/pilha/remover.html`;
-        }
-        else {
-            remove(velocidade, animation);
-        }
+        remove(velocidade, animation);
     });
 
     $("#limpar").click(() => {
-        if (lastPage !== `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`) {
-            $("#codigo").load(`templates/${$("#linguagem").val()}/pilha/pilha_geral.html`, undefined, () => {
-                clean();
-            });
-            lastPage = `templates/${$("#linguagem").val()}/pilha/pilha_geral.html`;
-        }
-        else {
-            clean();
-        }
+        clean();
     });
 
     var velocidade = 1000; // Velocidade padrão (1 segundo)

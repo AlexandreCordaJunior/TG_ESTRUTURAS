@@ -64,7 +64,6 @@ void remover(Lista *l, int indice){
     }
 
     No *temporario = atual;
-    int valor = temporario->valor;
 
     if(anterior == NULL){
         l->topo = l->topo->proximo;
@@ -86,29 +85,16 @@ void printAll(Lista *l){
 
 int main() {
     Lista *l = criarLista();
-    inserir(l, 15, 1);
+    inserir(l, 5, 0);
     printAll(l);
-    inserir(l, 16, 0);
+    inserir(l, 10, 0);
     printAll(l);
-    inserir(l, 151, 1);
+    inserir(l, 15, 2);
     printAll(l);
-    inserir(l, 152, 0);
-    printAll(l);
-    inserir(l, 153, 1);
-    printAll(l);
-    inserir(l, 154, 1);
-    printAll(l);
-    inserir(l, 155, 1);
-    printAll(l);
-
-    remover(l, 1);
-    printAll(l);
-    remover(l, 1);
+    inserir(l, 20, 1);
     printAll(l);
     remover(l, 1);
     printAll(l);
     remover(l, 0);
-    printAll(l);
-    remover(l, 1);
     printAll(l);
 }

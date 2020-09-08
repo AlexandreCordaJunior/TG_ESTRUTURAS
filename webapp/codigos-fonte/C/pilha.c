@@ -32,7 +32,6 @@ void desempilhar(Pilha *p){
     }
     No *temporario = p->topo;
     p->topo = p->topo->proximo;
-    int valor = temporario->valor;
     free(temporario);
 }
 
@@ -47,12 +46,16 @@ void printAll(Pilha *p){
 
 int main() {
     Pilha *p = criarPilha();
-    for(int i = 0; i < 10; i++){
-        empilhar(p, i);
-        printAll(p);
-    }
-    for(int i = 0; i < 10; i++){
-        desempilhar(p);
-        printAll(p);
-    }
+    empilhar(p, 5);
+    printAll(p);
+    empilhar(p, 10);
+    printAll(p);
+    empilhar(p, 15);
+    printAll(p);
+    empilhar(p, 20);
+    printAll(p);
+    desempilhar(p);
+    printAll(p);
+    desempilhar(p);
+    printAll(p);
 }

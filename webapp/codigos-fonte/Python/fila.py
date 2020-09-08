@@ -28,8 +28,6 @@ class Fila:
             self.cabeca = self.cauda = None
         else:
             self.cabeca = self.cabeca.proximo
-        
-        valor = temporario.valor        
 
 
 def printAll(fila):
@@ -41,10 +39,15 @@ def printAll(fila):
 
 
 f = Fila()
-for i in range(10):
-    f.enfileirar(i)
-    printAll(f)
-
-for i in range(10):
-    printAll(f)
-    f.desenfileirar()
+f.enfileirar(5)
+printAll(f)
+f.enfileirar(10)
+printAll(f)
+f.enfileirar(15)
+printAll(f)
+f.enfileirar(20)
+printAll(f)
+f.desenfileirar()
+printAll(f)
+f.desenfileirar()
+printAll(f)

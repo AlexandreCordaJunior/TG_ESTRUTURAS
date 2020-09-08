@@ -1,0 +1,58 @@
+package fila
+
+data class No (var valor:Int, var proximo: No? = null)
+
+data class Fila (var cabeca:No? = null, var cauda:No? = null) {
+    fun enfileirar(valor: Int) {
+        val novoNo = No(valor)
+
+        if(this.cabeca == this.cauda && this.cabeca == null) {
+            this.cabeca = novoNo
+            this.cauda = novoNo
+        }
+        else {
+            this.cauda?.proximo = novoNo
+            this.cauda = novoNo
+        }
+    }
+
+    fun desenfileirar() {
+        if(this.cabeca == this.cauda && this.cabeca == null) {
+            println("Erro ao tentar retirar um elemento de uma fila vazia")
+            return
+        }
+
+        if(this.cabeca == this.cauda) {
+            this.cabeca = null
+            this.cauda = null
+        }
+        else{
+            this.cabeca = this.cabeca?.proximo
+        }
+    }
+
+    fun printAll() {
+        var atual = this.cabeca
+        while (atual != null) {
+            print(String.format("%d ", atual.valor))
+            atual = atual.proximo
+        }
+        println()
+    }
+}
+
+fun main() {
+    val f = Fila();
+    f.enfileirar(5)
+    f.printAll()
+    f.enfileirar(10)
+    f.printAll()
+    f.enfileirar(15)
+    f.printAll()
+    f.enfileirar(20)
+    f.printAll()
+    f.desenfileirar()
+    f.printAll()
+    f.desenfileirar()
+    f.printAll()
+}

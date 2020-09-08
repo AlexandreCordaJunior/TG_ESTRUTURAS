@@ -34,6 +34,7 @@ void desenfileirar(Fila *f){
         printf("Erro ao tentar retirar um elemento de uma fila vazia\n");
         return;
     }
+
     No *temporario = f->cabeca;
     if(f->cabeca == f->cauda){
         f->cabeca = f->cauda = NULL;
@@ -41,7 +42,6 @@ void desenfileirar(Fila *f){
     else{
         f->cabeca = f->cabeca->proximo;
     }
-    int valor = temporario->valor;
     free(temporario);
 }
 
@@ -62,12 +62,16 @@ Fila *criarFila(){
 
 int main() {
     Fila *f = criarFila();
-    for(int i = 0; i < 10; i++){
-        enfileirar(f, i);
-        printAll(f);
-    }
-    for(int i = 0; i < 10; i++){
-        desenfileirar(f);
-        printAll(f);
-    }
+    enfileirar(f, 5);
+    printAll(f);
+    enfileirar(f, 10);
+    printAll(f);
+    enfileirar(f, 15);
+    printAll(f);
+    enfileirar(f, 20);
+    printAll(f);
+    desenfileirar(f);
+    printAll(f);
+    desenfileirar(f);
+    printAll(f);
 }
