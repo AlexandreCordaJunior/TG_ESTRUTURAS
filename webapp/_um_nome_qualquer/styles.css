@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f0f0f0 !important;
+}
+
+.navbar {
+    /* background-color: #474787 !important; */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .15);
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+a.nav-item.nav-link {
+    cursor: pointer;
+}
+
+pre {
+    background: #262c3a;
+    white-space: pre;
+    word-wrap: break-word;
+    overflow: auto;
+}
+
+
+.btnCopy {
+    background-color: #ee5253;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 2px;
+    width: 100px;
+    border: none;
+    position: absolute;
+    right: 18px;
+    top: 14px;
+    line-height: 20px;
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .4s;
+    outline: none;
+}
+
+.btnCopy:hover {
+    opacity: .80;
+}
+
+pre.code {
+    border-radius: 4px;
+    border: 1px solid #292929;
+    position: relative;
+}
+
+pre.code code {
+    font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    display: block;
+    margin-left: 50px;
+    overflow-x: auto;
+    font-size: .9rem;
+    color: #dff9fb;
+}
