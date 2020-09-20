@@ -2,32 +2,32 @@
 <body>
     <pre>
         <code>
-função remover(fila, posicao) {
-    se lista.topo == NULO {
-        exiba("Erro ao tentar retirar um elemento de uma lista vazia\n")
-        retorna
-    }
-
-    se lista.tamanho < posicao {
-        exiba("Erro ao tentar retirar um elemento inexistente de uma lista\n")
-        retorna
-    }
-
-    anterior = NULO
-    atual = lista.topo
-
-    para i de 0 até posicao {
-        anterior = atual
-        atual = atual.proximo
-    }
-
-    se anterior == NULO {
-        lista.topo = lista.topo.proximo
-    }
-    se não {
-        anterior.proximo = atual.proximo
-    }
-}
+<span>função remover(fila, posicao) {</span>
+<span>    se lista.topo == NULO {</span>
+<span>        exiba("Erro ao tentar retirar um elemento de uma lista vazia\n")</span>
+<span>        retorna</span>
+<span>    }</span>
+<span></span>
+<span>    se lista.tamanho < posicao {</span>
+<span>        exiba("Erro ao tentar retirar um elemento inexistente de uma lista\n")</span>
+<span>        retorna</span>
+<span>    }</span>
+<span></span>
+<span>    anterior = NULO</span>
+<span>    atual = lista.topo</span>
+<span></span>
+<span>    para i de 0 até posicao {</span>
+<span>        anterior = atual</span>
+<span>        atual = atual.proximo</span>
+<span>    }</span>
+<span></span>
+<span>    se anterior == NULO {</span>
+<span>        lista.topo = lista.topo.proximo</span>
+<span>    }</span>
+<span>    se não {</span>
+<span>        anterior.proximo = atual.proximo</span>
+<span>    }</span>
+<span>}</span>
         </code>
     </pre>
 </body>

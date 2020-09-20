@@ -11,8 +11,8 @@ function destacaCodigo(tempo, vetNum) {
                     if(i === qtdNum - 1) {
                         fResolve();
                     }
-                }, tempo / 3);
-            }, (tempo / 3) * i);
+                }, tempo / 6);
+            }, (tempo / 6) * i);
         }
     }.bind(this));
 }
@@ -58,12 +58,14 @@ async function add(velocidade, animation) {
     }
 
     if ($('#indice').val() > $('#lista > div').length) {
+        await destacaCodigo(velocidade, [1, 2, 3, 4]);
         alert(`ERRO: O próximo índice deve ser o ${$('#lista > div').length}.`);
         $('#indice').val('');
         $('#indice').focus();
         return 0;
     }
 
+    await destacaCodigo(velocidade, [5, 6, 7, 9, 10]);
     if ($('#indice').val() == 0) {
         $('#indice').prop('disabled', true);
         $('#numero').prop('disabled', true);
@@ -81,7 +83,8 @@ async function add(velocidade, animation) {
             'top': '0px'
         }, {
             duration: velocidade, /* Poderia ser o valor da velocidade, mas é muito lento */
-            start: () => {
+            start: async () => {
+                await destacaCodigo(velocidade,[17, 18, 19, 20, 25]);
                 animation = true;
             },
             complete: async () => {
@@ -126,10 +129,14 @@ async function add(velocidade, animation) {
             'top': '0px'
         }, {
             duration: velocidade,
-            start: () => {
+            start: async () => {
                 animation = true;
             },
             complete: async () => {
+                for(let i = 0; i < $('#indice').val(); i++) {
+                    await destacaCodigo(velocidade,[12, 13, 14, 15]);
+                }
+                await destacaCodigo(velocidade, [21, 22, 23, 24, 25]);
                 $('#lista > div:first-child').connections({
                     to: $('#lista > div'),
                     css: {
@@ -157,6 +164,7 @@ async function add(velocidade, animation) {
 
 async function remove(velocidade, animation) {
     if ($('#lista > div').length == 0) {
+        await destacaCodigo(velocidade, [1, 2, 3, 4]);
         alert('ERRO: A lista já está vázia.');
         return 0;
     }
@@ -170,6 +178,7 @@ async function remove(velocidade, animation) {
     var indice = Number($('#indice').val()) + 1;
 
     if (indice < 1 || indice > $('#lista > div').length) {
+        await destacaCodigo(velocidade, [6, 7, 8, 9]);
         alert('ERRO: O índice digitado não está na lista.');
         $('#indice').val('');
         $('#indice').focus();
@@ -178,6 +187,8 @@ async function remove(velocidade, animation) {
 
     $('#lista > div').connections('remove');
 
+    await destacaCodigo(velocidade, [11, 12]);
+
     $(`#lista > div:nth-child(${indice})`).css({
         'position': 'relative',
         'background-color': '#EA2027'
@@ -185,7 +196,7 @@ async function remove(velocidade, animation) {
         'top': '30px'
     }, {
         duration: velocidade,
-        start:  () => {
+        start:  async () => {
             $('#indice').prop('disabled', true);
             $('#numero').prop('disabled', true);
             $('#adicionar').prop('disabled', true);
@@ -217,6 +228,16 @@ async function remove(velocidade, animation) {
             $('#numero').val('');
             $('#indice').focus();
 
+            for(let i = 0; i < indice - 1; i++) {
+                await destacaCodigo(velocidade, [14, 15, 16, 17]);
+            }
+            if(indice - 1) {
+                await destacaCodigo(velocidade, [22, 23, 24]);
+            }
+            else{
+                await destacaCodigo(velocidade, [19, 20, 21]);
+            }
+
             animation = false;
         }
     });
@@ -240,18 +261,22 @@ $('document').ready(() => {
 
     //adicionar, remover, limpar
     $('#adicionar').click(() => {
-        add(velocidade, animation);
+        $("#codigo").load("template/lista/lista_inserir.html", undefined, () => {
+            add(velocidade, animation);
+        });
     });
 
     $('#remover').click(() => {
-        remove(velocidade, animation);
+        $("#codigo").load("template/lista/lista_remover.html", undefined, () => {
+            remove(velocidade, animation);
+        });
     });
 
     $("#limpar").click(() => {
         clean();
     });
 
-    var velocidade = 250; // Velocidade padrão (1 segundo)
+    var velocidade = 1000; // Velocidade padrão (1 segundo)
     var animation = false;
 
     $('#velocidade').change(() => {

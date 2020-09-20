@@ -11,13 +11,13 @@ function destacaCodigo(tempo, vetNum) {
                     if (i === qtdNum - 1) {
                         fResolve();
                     }
-                }, tempo / 3);
-            }, (tempo / 3) * i);
+                }, tempo / 6);
+            }, (tempo / 6) * i);
         }
     }.bind(this));
 }
 
-function add(velocidade, animation) {
+async function add(velocidade, animation) {
 
     if ($('#numero').val() == '') {
         alert('ERRO: O campo número está vázio.');
@@ -37,6 +37,8 @@ function add(velocidade, animation) {
         $('#numero').val('');
         return 0;
     }
+
+    await destacaCodigo(velocidade, [1, 2, 3, 4]);
 
     $('#numero').prop('disabled', true);
     $('#adicionar').prop('disabled', true);
@@ -114,6 +116,7 @@ function add(velocidade, animation) {
 async function remove(velocidade, animation) {
 
     if ($('#pilha > div').length == 0) {
+        await destacaCodigo(velocidade, [1, 2, 3]);
         alert('ERRO: A pilha já está vazia.');
         return 0;
     }
@@ -124,7 +127,8 @@ async function remove(velocidade, animation) {
         'left': '-30px'
     }, {
         duration: velocidade,
-        start: () => {
+        start: async () => {
+            await destacaCodigo(velocidade, [4]);
             animation = true;
 
             var length = $('#pilha > div').length;
@@ -192,11 +196,15 @@ $('document').ready(() => {
 
     //adicionar, remover, limpar
     $('#adicionar').click(() => {
-        add(velocidade, animation);
+        $("#codigo").load("template/pilha/pilha_inserir.html", undefined, () => {
+            add(velocidade, animation);
+        });
     });
 
     $('#remover').click(() => {
-        remove(velocidade, animation);
+        $("#codigo").load("template/pilha/pilha_remover.html", undefined, () => {
+            remove(velocidade, animation);
+        });
     });
 
     $("#limpar").click(() => {

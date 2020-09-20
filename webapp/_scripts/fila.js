@@ -11,8 +11,8 @@ function destacaCodigo(tempo, vetNum) {
                     if (i === qtdNum - 1) {
                         fResolve();
                     }
-                }, tempo / 3);
-            }, (tempo / 3) * i);
+                }, tempo / 6);
+            }, (tempo / 6) * i);
         }
     }.bind(this));
 }
@@ -36,6 +36,9 @@ async function add(velocidade, animation) {
         $('#numero').val('');
         return 0;
     }
+
+    await destacaCodigo(velocidade, [1, 2, 3]);
+
     $('#numero').prop('disabled', true);
     $('#adicionar').prop('disabled', true);
     $('#remover').prop('disabled', true);
@@ -52,7 +55,7 @@ async function add(velocidade, animation) {
         start: () => {
             animation = true;
         },
-        complete: () => {
+        complete: async () => {
             $('#fila > div:first-child').connections({
                 to: $('#fila > div'),
                 css: {
@@ -62,6 +65,7 @@ async function add(velocidade, animation) {
             });
 
             if (!document.getElementById('head')) {
+                await destacaCodigo(velocidade, [5, 6, 7, 8]);
                 $('<span>', {
                     html: 'Head', id: 'head',
                     css: {
@@ -74,6 +78,7 @@ async function add(velocidade, animation) {
                     }
                 }).appendTo('#fila > div:first-child').hide().fadeIn();
             } else {
+                await destacaCodigo(velocidade, [9, 10, 11, 12]);
                 $('#head').appendTo('#fila > div:first-child').hide().fadeIn();
             }
 
@@ -112,6 +117,7 @@ async function add(velocidade, animation) {
 
 async function remove(velocidade, animation) {
     if ($('#fila > div').length == 0) {
+        await destacaCodigo(velocidade, [1, 2, 3, 4]);
         alert('ERRO: A fila já está vazia.');
         return 0;
     }
@@ -122,20 +128,23 @@ async function remove(velocidade, animation) {
         'top': '30px'
     }, {
         duration: velocidade,
-        start: () => {
+        start: async () => {
             animation = true;
 
             var length = $('#fila > div').length;
             if (length == 1) {
+                await destacaCodigo(velocidade, [6, 7, 8, 9]);
                 $('#head').remove();
                 $('#tail').remove();
             } else if (length == 2) {
+                await destacaCodigo(velocidade, [10, 11, 12]);
                 $('#tail').css({
                     top: '65px',
                     left: '8px'
                 }).appendTo('#fila > div:last-child').hide().fadeIn();
                 $('#head').appendTo(`#fila > div:nth-child(2)`).hide().fadeIn();
             } else {
+                await destacaCodigo(velocidade, [10, 11, 12]);
                 $('#head').appendTo(`#fila > div:nth-child(2)`).hide().fadeIn();
             }
 
@@ -184,11 +193,6 @@ function clean() {
 }
 
 $('document').ready(() => {
-
-    $("#linguagem").change(() => {
-
-    });
-
     var velocidade = 1000; // Velocidade padrão (1 segundo)
     var animation = false;
 
@@ -198,11 +202,15 @@ $('document').ready(() => {
     });
 
     $('#adicionar').click(() => {
-        add(velocidade, animation);
+        $("#codigo").load("template/fila/fila_inserir.html", undefined, () => {
+            add(velocidade, animation);
+        });
     });
 
     $('#remover').click(() => {
-        remove(velocidade, animation);
+        $("#codigo").load("template/fila/fila_remover.html", undefined, () => {
+            remove(velocidade, animation);
+        });
     });
 
     $("#limpar").click(() => {

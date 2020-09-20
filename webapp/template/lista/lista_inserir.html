@@ -2,33 +2,33 @@
 <body>
     <pre>
         <code>
-função inserir(lista, valor, posicao) {
-    se posicao > lista.tamanho {
-        exiba("Não foi possível inserir, pois a lista tem " + lista.tamanho + " elementos\n")
-        retorna
-    }
-    novoNo = novo No()
-    novoNo.valor = valor
-    novoNo.proximo = NULO
-
-    anterior = NULO
-    atual = lista.topo
-
-    para i de 0 até posicao {
-        anterior = atual
-        atual = atual.proximo
-    }
-
-    se anterior == NULO {
-        novoNo.proximo = atual
-        lista.topo = novoNo
-    }
-    se não {
-        novoNo.proximo = atual
-        anterior.proximo = novoNo
-    }
-    lista.tamanho = lista.tamanho + 1
-}
+<span>função inserir(lista, valor, posicao) {</span>
+<span>    se posicao > lista.tamanho {</span>
+<span>        exiba("Não foi possível inserir, pois a lista tem " + lista.tamanho + " elementos\n")</span>
+<span>        retorna</span>
+<span>    }</span>
+<span>    novoNo = novo No()</span>
+<span>    novoNo.valor = valor</span>
+<span>    novoNo.proximo = NULO</span>
+<span></span>
+<span>    anterior = NULO</span>
+<span>    atual = lista.topo</span>
+<span></span>
+<span>    para i de 0 até posicao {</span>
+<span>        anterior = atual</span>
+<span>        atual = atual.proximo</span>
+<span>    }</span>
+<span></span>
+<span>    se anterior == NULO {</span>
+<span>        novoNo.proximo = atual</span>
+<span>        lista.topo = novoNo</span>
+<span>    }</span>
+<span>    se não {</span>
+<span>        novoNo.proximo = atual</span>
+<span>        anterior.proximo = novoNo</span>
+<span>    }</span>
+<span>    lista.tamanho = lista.tamanho + 1</span>
+<span>}</span>
         </code>
     </pre>
 </body>
