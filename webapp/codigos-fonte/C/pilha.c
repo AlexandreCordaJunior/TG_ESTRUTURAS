@@ -29,6 +29,7 @@ void empilhar(Pilha *p, int valor){
 void desempilhar(Pilha *p){
     if(p->topo == NULL){
         printf("Erro ao tentar retirar um elemento de uma pilha vazia\n");
+        return;
     }
     No *temporario = p->topo;
     p->topo = p->topo->proximo;

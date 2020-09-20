@@ -1,0 +1,35 @@
+<html>
+<body>
+    <pre>
+        <code>
+função inserir(lista, valor, posicao) {
+    se posicao > lista.tamanho {
+        exiba("Não foi possível inserir, pois a lista tem " + lista.tamanho + " elementos\n")
+        retorna
+    }
+    novoNo = novo No()
+    novoNo.valor = valor
+    novoNo.proximo = NULO
+
+    anterior = NULO
+    atual = lista.topo
+
+    para i de 0 até posicao {
+        anterior = atual
+        atual = atual.proximo
+    }
+
+    se anterior == NULO {
+        novoNo.proximo = atual
+        lista.topo = novoNo
+    }
+    se não {
+        novoNo.proximo = atual
+        anterior.proximo = novoNo
+    }
+    lista.tamanho = lista.tamanho + 1
+}
+        </code>
+    </pre>
+</body>
+</html>

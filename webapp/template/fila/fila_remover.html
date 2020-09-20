@@ -1,0 +1,22 @@
+<html>
+<body>
+    <pre>
+        <code>
+função remover(fila) {
+    se fila.cabeca == fila.cauda e fila.cabeca == NULO {
+        exiba("Erro ao tentar retirar um elemento de uma fila vazia\n")
+        retorna
+    }
+
+    se fila.cabeca == fila.cauda {
+        f->cabeca = NULO
+        f->cauda = NULO
+    }
+    se não{
+        fila.cabeca = fila.cabeca.proximo
+    }
+}
+        </code>
+    </pre>
+</body>
+</html>
