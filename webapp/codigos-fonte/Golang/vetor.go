@@ -1,4 +1,3 @@
-<html><body><pre><code>
 package main
 
 import "fmt"
@@ -37,4 +36,3 @@ func main() {
 	v.inserir(155, 1)
 	v.printAll()
 }
-</code></pre></body></html>

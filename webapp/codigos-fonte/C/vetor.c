@@ -1,5 +1,4 @@
-<html><body><pre><code>
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 #define TAMANHO 10
 
 void inserir(int *vetor, int valor, int indice) {
@@ -36,4 +35,3 @@ int main() {
     inserir(vetor, 155, 1);
     printAll(vetor);
 }
-</code></pre></body></html>

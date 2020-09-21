@@ -1,4 +1,3 @@
-<html><body><pre><code>
 package Java;
 
 public class Vetor {
@@ -44,4 +43,3 @@ public class Vetor {
         v.printAll();
     }
 }
-</code></pre></body></html>

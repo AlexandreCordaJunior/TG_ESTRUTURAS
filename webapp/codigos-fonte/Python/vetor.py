@@ -1,4 +1,3 @@
-<html><body><pre><code>
 class Vetor:
     def __init__(self):
         self.TAMANHO = 10
@@ -29,4 +28,3 @@ vetor.inserir(154, 1)
 vetor.printAll()
 vetor.inserir(155, 1)
 vetor.printAll()
-</code></pre></body></html>

@@ -1,4 +1,3 @@
-<html><body><pre><code>
 package vetor
 
 data class Vetor (
@@ -36,4 +35,3 @@ fun main() {
     v.inserir(155, 1)
     v.printAll()
 }
-</code></pre></body></html>
