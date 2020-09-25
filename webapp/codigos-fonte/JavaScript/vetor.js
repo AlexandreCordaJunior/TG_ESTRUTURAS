@@ -1,4 +1,3 @@
-<html><body><pre><code>
 const TAMANHO = 10;
 
 function VetorFactory() {
@@ -41,4 +40,3 @@ v.inserir(154, 1);
 v.printAll();
 v.inserir(155, 1);
 v.printAll();
-</code></pre></body></html>

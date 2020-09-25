@@ -1,4 +1,3 @@
-<html><body><pre><code>
 function NoFactory(valor, proximo) {
     return {
         valor,
@@ -62,4 +61,3 @@ f.desenfileirar();
 f.printAll();
 f.desenfileirar();
 f.printAll();
-</code></pre></body></html>

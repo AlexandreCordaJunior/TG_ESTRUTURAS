@@ -1,4 +1,26 @@
+function destacaCodigo(tempo, vetNum) {
+    return new Promise(function (fResolve) {
+        let children = document.getElementsByTagName("code")[0].children;
+
+        let qtdNum = vetNum.length;
+        for (let i = 0; i < qtdNum; i++) {
+            setTimeout(() => {
+                children[vetNum[i]].classList.add("destaque");
+                setTimeout(() => {
+                    children[vetNum[i]].classList.toggle("destaque");
+                    if (i === qtdNum - 1) {
+                        fResolve();
+                    }
+                }, tempo / 6);
+            }, (tempo / 6) * i);
+        }
+    }.bind(this));
+}
+
 $('document').ready(() => {
+
+    $("#codigo").load("template/vetor/vetor_inserir.html");
+
     /* Insere valores aleatorios no vetor inicialmente */
     for(var i = 0; i < 10; i++) {
         $(`#v${i}`).html(Math.floor(Math.random() * 100));
@@ -74,7 +96,8 @@ $('document').ready(() => {
             left: `${final.left}px`
         }, {
             duration: velocidade,
-            start: () => {
+            start: async() => {
+                await destacaCodigo(velocidade, [1, 2, 3]);
                 $('#indice').val('');
                 $('#numero').val('');
                 $('#indice').prop('disabled', true);
