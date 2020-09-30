@@ -38,16 +38,16 @@ body {
 }
 
 #wrapper.toggled {
-    padding-right: 550px;
+    padding-right: 400px;
 }
 
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    right: 550px;
+    right: 400px;
     width: 0;
     height: 100%;
-    margin-right: -550px;
+    margin-right: -400px;
     overflow-y: auto;
     background: #ee5253;
     -webkit-transition: all 0.5s ease;
@@ -61,7 +61,7 @@ body {
     top: 0;
     margin: 0;
     padding: 0;
-    width: 550px;
+    width: 400px;
 }
 
 .sidebar #codigo label {
@@ -71,7 +71,7 @@ body {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 550px;
+    width: 400px;
 }
 
 #page-content-wrapper {

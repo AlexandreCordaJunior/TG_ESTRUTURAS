@@ -41,13 +41,32 @@
         });
     </script>
 
+    <style>
+        #wrapper.toggled {
+            padding-right: 500px;
+        }
+
+        #sidebar-wrapper {
+            right: 500px;
+            margin-right: -500px;
+        }
+
+        .sidebar {
+            width: 500px;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 500px;
+        }
+    </style>
+
     <title>Fila</title>
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark" style="background-color: #0f0f0f !important">
         <div class="container">
-            <a class="navbar-brand" href="#">Visualizador APP</a>
+            <a class="navbar-brand" href="index.html">Visualizador APP</a>
             <a class="menu-toggle"></a>
         </div>
     </nav>
@@ -55,18 +74,8 @@
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <div class="sidebar">
-                <div class="linguagem-wrapper p-2">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">Linguagem</label>
-                        </div>
-                        <select class="custom-select" id="linguagem">
-                            <option value="c" selected>C</option>
-                            <option value="python">Python</option>
-                        </select>
-                    </div>
-                </div>
                 <div id="codigo">
+
                 </div>
             </div>
         </div>
