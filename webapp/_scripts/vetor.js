@@ -35,22 +35,30 @@ $('document').ready(() => {
 
     $('#inserir').click(() => {
         if($('#indice').val() == '') {
-            alert('ERRO: O campo índice está vázio.');
+            $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+            $('#alert .message').text("O campo índice está vazio");
+            $('#indice').focus();
             return 0;
         }
 
         if($('#numero').val() == '') {
-            alert('ERRO: O campo número está vázio.');
+            $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+            $('#alert .message').text("O campo número está vázio");
+            $('#numero').focus();
             return 0;
         }
 
         if($('#numero').val().length > 2) {
-            alert('ERRO: O número digitado deve ter até 2 dígitos.');
+            $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+            $('#alert .message').text("O número digitado deve ter até 2 dígitos");
+            $('#numero').val('');
+            $('#numero').focus();
             return 0;
         }
 
         if($('#indice').val() < 0 || $('#indice').val() > 9) {
-            alert('ERRO: O índice deve estar entre 0 e 9.');
+            $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+            $('#alert .message').text(" O número do índice deve estar entre 0 e 9");
             $('#indice').val('');
             $('#indice').focus();
             return 0;
@@ -117,6 +125,9 @@ $('document').ready(() => {
                 $('#v' + indice).css({
                     'border' : '1px solid #000'
                 });
+                
+                $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+                $('#alert .message').text(`O número ${numero} foi inserido no índice ${indice}`);
             }
         });
     });

@@ -20,25 +20,30 @@ function destacaCodigo(tempo, vetNum) {
 async function add(velocidade, animation) {
 
     if ($('#numero').val() == '') {
-        alert('ERRO: O campo número está vázio.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O campo número está vazio");
         $('#numero').focus();
         return 0;
     }
 
     if ($('#numero').val().length > 2) {
-        alert('ERRO: O número digitado deve ter até 2 dígitos.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O número digitado deve ter até 2 dígitos");
         $('#numero').val('');
         $('#numero').focus();
         return 0;
     }
 
     if ($('#pilha > div').length >= 7) {
-        alert('ERRO: Pilha cheia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A pilha está cheia");
         $('#numero').val('');
         return 0;
     }
 
     await destacaCodigo(velocidade, [1, 2, 3, 4]);
+
+    var txtNumero = $('#numero').val();
 
     $('#numero').prop('disabled', true);
     $('#adicionar').prop('disabled', true);
@@ -111,13 +116,17 @@ async function add(velocidade, animation) {
             animation = false;
         }
     });
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text(`O número ${txtNumero} foi adicionado na pilha`);
 }
 
 async function remove(velocidade, animation) {
 
     if ($('#pilha > div').length == 0) {
         await destacaCodigo(velocidade, [1, 2, 3]);
-        alert('ERRO: A pilha já está vazia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A pilha já está vazia");
         return 0;
     }
 
@@ -177,13 +186,20 @@ async function remove(velocidade, animation) {
             animation = false;
         }
     });
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text("O último elemento inserido na pilha foi removido");
 }
 
 function clean() {
     if ($('#pilha > div').length == 0) {
-        alert('ERRO: A pilha já está vazia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A pilha já está vazia");
         return 0;
     }
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text("Todos os números da pilha foram removidos");
 
     $('#pilha > div').remove();
 }

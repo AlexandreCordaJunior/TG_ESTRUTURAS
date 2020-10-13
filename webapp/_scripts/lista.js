@@ -1,14 +1,14 @@
 function destacaCodigo(tempo, vetNum) {
-    return new Promise(function(fResolve){
+    return new Promise(function (fResolve) {
         let children = document.getElementsByTagName("code")[0].children;
 
         let qtdNum = vetNum.length;
-        for(let i = 0; i < qtdNum; i++) {
+        for (let i = 0; i < qtdNum; i++) {
             setTimeout(() => {
                 children[vetNum[i]].classList.add("destaque");
                 setTimeout(() => {
                     children[vetNum[i]].classList.toggle("destaque");
-                    if(i === qtdNum - 1) {
+                    if (i === qtdNum - 1) {
                         fResolve();
                     }
                 }, tempo / 6);
@@ -20,52 +20,63 @@ function destacaCodigo(tempo, vetNum) {
 async function add(velocidade, animation) {
 
     if ($('#indice').val() == '') {
-        alert('ERRO: O campo índice está vázio.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O campo índice está vazio");
         $('#indice').focus();
         return 0;
     }
 
     if ($('#indice').val() < 0) {
-        alert('ERRO: O campo índice deve ser igual ou maior que 0.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O campo índice deve ser igual ou maior que 0");
         $('#indice').val('');
         $('#indice').focus();
         return 0;
     }
 
     if ($('#numero').val() == '') {
-        alert('ERRO: O campo número está vázio.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O campo número está vazio");
         $('#numero').focus();
         return 0;
     }
 
     if ($('#numero').val().length > 2) {
-        alert('ERRO: O número digitado deve ter até 2 dígitos.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O número deve ter até 2 dígitos");
         $('#numero').val('');
         $('#numero').focus();
         return 0;
     }
 
     if ($('#lista > div').length == 0 && $('#indice').val() != 0) {
-        alert('ERRO: O índice do primeiro elemento da lista deve ser o 0.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O índice do primeiro elemento da lista deve ser o 0");
         $('#indice').val('');
         $('#indice').focus();
         return 0;
     }
 
     if ($('#lista > div').length >= 7) {
-        alert('ERRO: Lista cheia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A lista está cheia");
         return 0;
     }
 
     if ($('#indice').val() > $('#lista > div').length) {
         await destacaCodigo(velocidade, [1, 2, 3, 4]);
-        alert(`ERRO: O próximo índice deve ser o ${$('#lista > div').length}.`);
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text(`O próximo índice deve ser o ${$('#lista > div').length}`);
         $('#indice').val('');
         $('#indice').focus();
         return 0;
     }
 
     await destacaCodigo(velocidade, [5, 6, 7, 9, 10]);
+
+    var txtIndice = $('#indice').val();
+    var txtNumero = $('#numero').val();
+
     if ($('#indice').val() == 0) {
         $('#indice').prop('disabled', true);
         $('#numero').prop('disabled', true);
@@ -84,7 +95,7 @@ async function add(velocidade, animation) {
         }, {
             duration: velocidade, /* Poderia ser o valor da velocidade, mas é muito lento */
             start: async () => {
-                await destacaCodigo(velocidade,[17, 18, 19, 20, 25]);
+                await destacaCodigo(velocidade, [17, 18, 19, 20, 25]);
                 animation = true;
             },
             complete: async () => {
@@ -133,8 +144,8 @@ async function add(velocidade, animation) {
                 animation = true;
             },
             complete: async () => {
-                for(let i = 0; i < $('#indice').val(); i++) {
-                    await destacaCodigo(velocidade,[12, 13, 14, 15]);
+                for (let i = 0; i < $('#indice').val(); i++) {
+                    await destacaCodigo(velocidade, [12, 13, 14, 15]);
                 }
                 await destacaCodigo(velocidade, [21, 22, 23, 24, 25]);
                 $('#lista > div:first-child').connections({
@@ -160,17 +171,22 @@ async function add(velocidade, animation) {
             }
         });
     }
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text(`O número ${txtNumero} foi adicionado na posição ${txtIndice}`);
 }
 
 async function remove(velocidade, animation) {
     if ($('#lista > div').length == 0) {
         await destacaCodigo(velocidade, [1, 2, 3, 4]);
-        alert('ERRO: A lista já está vázia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A lista já está vázia");
         return 0;
     }
 
     if ($('#indice').val() == '') {
-        alert('ERRO: O campo índice está vazio.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O campo índice está vazio");
         $('#indice').focus();
         return 0;
     }
@@ -179,7 +195,8 @@ async function remove(velocidade, animation) {
 
     if (indice < 1 || indice > $('#lista > div').length) {
         await destacaCodigo(velocidade, [6, 7, 8, 9]);
-        alert('ERRO: O índice digitado não está na lista.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O índice digitado não está na fila");
         $('#indice').val('');
         $('#indice').focus();
         return 0;
@@ -196,7 +213,7 @@ async function remove(velocidade, animation) {
         'top': '30px'
     }, {
         duration: velocidade,
-        start:  async () => {
+        start: async () => {
             $('#indice').prop('disabled', true);
             $('#numero').prop('disabled', true);
             $('#adicionar').prop('disabled', true);
@@ -228,26 +245,33 @@ async function remove(velocidade, animation) {
             $('#numero').val('');
             $('#indice').focus();
 
-            for(let i = 0; i < indice - 1; i++) {
+            for (let i = 0; i < indice - 1; i++) {
                 await destacaCodigo(velocidade, [14, 15, 16, 17]);
             }
-            if(indice - 1) {
+            if (indice - 1) {
                 await destacaCodigo(velocidade, [22, 23, 24]);
             }
-            else{
+            else {
                 await destacaCodigo(velocidade, [19, 20, 21]);
             }
 
             animation = false;
         }
     });
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text("O índice digitado foi removido");
 }
 
 function clean() {
     if ($('#lista > div').length == 0) {
-        alert('ERRO: A lista já está vázia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A lista já está vázia");
         return 0;
     }
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text("Todos os números da lista foram removidos");
 
     $('#lista > div').remove();
 }
@@ -290,7 +314,7 @@ $('document').ready(() => {
 
     /* Caso mude o tamanho da janela do navegador */
     $(window).resize(() => {
-        if(animation == false) {
+        if (animation == false) {
             $('#lista > div').connections('remove');
 
             $('#lista > div:first-child').connections({

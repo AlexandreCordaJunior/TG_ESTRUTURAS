@@ -19,25 +19,30 @@ function destacaCodigo(tempo, vetNum) {
 
 async function add(velocidade, animation) {
     if ($('#numero').val() == '') {
-        alert('ERRO: O campo número está vázio.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O campo número está vázio");
         $('#numero').focus();
         return 0;
     }
 
     if ($('#numero').val().length > 2) {
-        alert('ERRO: O número digitado deve ter até 2 dígitos.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("O número digitado deve ter até 2 dígitos");
         $('#numero').val('');
         $('#numero').focus();
         return 0;
     }
 
     if ($('#fila > div').length >= 7) {
-        alert('ERRO: Fila cheia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A fila está cheia");
         $('#numero').val('');
         return 0;
     }
 
     await destacaCodigo(velocidade, [1, 2, 3]);
+
+    var txtNumero = $('#numero').val();
 
     $('#numero').prop('disabled', true);
     $('#adicionar').prop('disabled', true);
@@ -113,12 +118,16 @@ async function add(velocidade, animation) {
             animation = false;
         }
     });
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text(`O número ${txtNumero} foi adicionado na fila`);
 }
 
 async function remove(velocidade, animation) {
     if ($('#fila > div').length == 0) {
         await destacaCodigo(velocidade, [1, 2, 3, 4]);
-        alert('ERRO: A fila já está vazia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A fila já está vazia");
         return 0;
     }
 
@@ -181,13 +190,20 @@ async function remove(velocidade, animation) {
             animation = false;
         }
     });
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text("O primeiro elemento da fila foi removido");
 }
 
 function clean() {
     if ($('#fila > div').length == 0) {
-        alert('ERRO: A fila já está vazia.');
+        $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
+        $('#alert .message').text("A fila já está vazia");
         return 0;
     }
+
+    $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-success');
+    $('#alert .message').text("Todos os números da fila foram removidos");
 
     $('#fila > div').remove();
 }
