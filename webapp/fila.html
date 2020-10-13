@@ -30,9 +30,9 @@
         $(document).ready(() => {
             resize();
 
-            $('.menu-toggle').click(() => {
-                $('#wrapper').toggleClass('toggled');
-                $('.menu-toggle').toggleClass('menu');
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
             });
 
             $(window).resize(() => {
@@ -41,25 +41,6 @@
         });
     </script>
 
-    <style>
-        #wrapper.toggled {
-            padding-right: 500px;
-        }
-
-        #sidebar-wrapper {
-            right: 500px;
-            margin-right: -500px;
-        }
-
-        .sidebar {
-            width: 500px;
-        }
-
-        #wrapper.toggled #sidebar-wrapper {
-            width: 500px;
-        }
-    </style>
-
     <title>Fila</title>
 </head>
 
@@ -67,7 +48,11 @@
     <nav class="navbar navbar-dark bg-dark" style="background-color: #0f0f0f !important">
         <div class="container">
             <a class="navbar-brand" href="index.html">Visualizador APP</a>
-            <a class="menu-toggle"></a>
+            <button id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 

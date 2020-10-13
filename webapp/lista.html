@@ -30,9 +30,9 @@
     $(document).ready(() => {
       resize();
 
-      $('.menu-toggle').click(() => {
-        $('#wrapper').toggleClass('toggled');
-        $('.menu-toggle').toggleClass('menu');
+      $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
       });
 
       $(window).resize(() => {
@@ -48,7 +48,11 @@
   <nav class="navbar navbar-dark bg-dark" style="background-color: #0f0f0f !important">
     <div class="container">
       <a class="navbar-brand" href="index.html">Visualizador APP</a>
-      <a class="menu-toggle"></a>
+      <button id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -56,7 +60,7 @@
     <div id="sidebar-wrapper">
       <div class="sidebar">
         <div id="codigo">
-          
+
         </div>
       </div>
     </div>

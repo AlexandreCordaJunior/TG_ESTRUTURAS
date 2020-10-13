@@ -75,8 +75,9 @@ $('document').ready(() => {
             'width' : '35px',
             'border' : '3px solid red',
             'border-radius' : '50%',
-            'text-align' : 'center',
-            'line-height' : '30px'
+            'display': 'flex',
+            'justify-content': 'center',
+            'align-items': 'center'
         });
 
         /* Borda vermelha no indice */
