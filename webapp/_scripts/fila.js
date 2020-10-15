@@ -70,7 +70,7 @@ async function add(velocidade, animation) {
             });
 
             if (!document.getElementById('head')) {
-                await destacaCodigo(velocidade, [5, 6, 7, 8]);
+                await destacaCodigo(velocidade, [5, 6, 7, 8, 9]);
                 $('<span>', {
                     html: 'Head', id: 'head',
                     css: {
@@ -83,7 +83,7 @@ async function add(velocidade, animation) {
                     }
                 }).appendTo('#fila > div:first-child').hide().fadeIn();
             } else {
-                await destacaCodigo(velocidade, [9, 10, 11, 12]);
+                await destacaCodigo(velocidade, [10, 11, 12, 13]);
                 $('#head').appendTo('#fila > div:first-child').hide().fadeIn();
             }
 
@@ -125,7 +125,7 @@ async function add(velocidade, animation) {
 
 async function remove(velocidade, animation) {
     if ($('#fila > div').length == 0) {
-        await destacaCodigo(velocidade, [1, 2, 3, 4]);
+        await destacaCodigo(velocidade, [1, 2, 3, 4, 5]);
         $('#alert').removeClass('alert-primary alert-success alert-danger').addClass('alert-danger');
         $('#alert .message').text("A fila já está vazia");
         return 0;
@@ -142,18 +142,18 @@ async function remove(velocidade, animation) {
 
             var length = $('#fila > div').length;
             if (length == 1) {
-                await destacaCodigo(velocidade, [6, 7, 8, 9]);
+                await destacaCodigo(velocidade, [7, 8, 9, 10]);
                 $('#head').remove();
                 $('#tail').remove();
             } else if (length == 2) {
-                await destacaCodigo(velocidade, [10, 11, 12]);
+                await destacaCodigo(velocidade, [11, 12, 13]);
                 $('#tail').css({
                     top: '65px',
                     left: '8px'
                 }).appendTo('#fila > div:last-child').hide().fadeIn();
                 $('#head').appendTo(`#fila > div:nth-child(2)`).hide().fadeIn();
             } else {
-                await destacaCodigo(velocidade, [10, 11, 12]);
+                await destacaCodigo(velocidade, [11, 12, 13]);
                 $('#head').appendTo(`#fila > div:nth-child(2)`).hide().fadeIn();
             }
 
