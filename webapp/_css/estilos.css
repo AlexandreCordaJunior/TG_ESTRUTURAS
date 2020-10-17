@@ -12,15 +12,15 @@ body {
     overflow-x: hidden;
 }
 
-/* ::-webkit-scrollbar{
+::-webkit-scrollbar{
     height: 10px;
     width: 10px;
-    background: rgba(0,0,0,.5);
+    background: rgba(0,0,0,.0);
 }
 
 ::-webkit-scrollbar-thumb:horizontal{
     background: #dfe6e9;
-} */
+}
 
 #menu-toggle {
     display: flex;
@@ -79,7 +79,10 @@ body {
 }
 
 #outras-linguagens {
-    margin: 8px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: red;
 }
 
 #outras-linguagens a {
@@ -113,7 +116,7 @@ body {
 }
 
 table {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 table td {
