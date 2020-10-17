@@ -17,6 +17,15 @@ body {
     font-weight: 500;
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    margin-right: 8px;
+}
+
 a.nav-item.nav-link {
     cursor: pointer;
 }

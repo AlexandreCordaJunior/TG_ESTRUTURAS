@@ -20,14 +20,17 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">Visualiza Estruturas</a>
+            <a class="navbar-brand" href="../index.html">
+                <img src="../_assets/arrow-left-black.svg" />
+                Visualiza Estruturas
+            </a>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
                 data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav mx-auto">
+                <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link" id="c">C</a>
                     <a class="nav-item nav-link active" id="java">Java</a>
                     <a class="nav-item nav-link" id="python">Python</a>
@@ -142,16 +145,6 @@ public class Vetor {
                 setTimeout(() => {
                     $('#copy').html('Copiar');
                 }, 1500);
-            });
-
-            $(window).resize(() => {
-                if (window.innerWidth < 768) {
-                    $('#languageSelection').removeClass('w-25');
-                    $('#languageSelection').addClass('w-100');
-                } else {
-                    $('#languageSelection').removeClass('w-100');
-                    $('#languageSelection').addClass('w-25');
-                }
             });
         });
     </script>

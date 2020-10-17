@@ -2,109 +2,111 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="_css/estilos.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="_css/estilos.css">
 
-    <!-- Scripts -->
-    <script src="_scripts/resize.js"></script>
+  <!-- Scripts -->
+  <script src="_scripts/resize.js"></script>
 
-    <script src="_scripts/pilha.js"></script>
+  <script src="_scripts/pilha.js"></script>
 
-    <script src="_scripts/jquery-connections/jquery.connections.js"></script>
+  <script src="_scripts/jquery-connections/jquery.connections.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">
 
-    <script type="text/javascript">
-        $(document).ready(() => {
-            resize();
+  <script type="text/javascript">
+    $(document).ready(() => {
+      resize();
 
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
+      $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
 
-            $(window).resize(() => {
-                resize();
-            });
-        });
-    </script>
+      $(window).resize(() => {
+        resize();
+      });
+    });
+  </script>
 
-    <title>Pilha</title>
+  <title>Pilha</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark" style="background-color: #0f0f0f !important">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Visualiza Estruturas</a>
-            <button id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <div class="sidebar">
-                <div id="codigo">
-
-                </div>
-            </div>
-        </div>
-        <div id="page-content-wrapper">
-            <div class="container">
-                <div class="alert alert-primary text-center" role="alert" id="alert">
-                    <span class="message">Digite um número para ser inserido na pilha</span>
-                </div>
-
-                <!-- Formulário -->
-                <div class="form-inline justify-content-center my-2">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Número</span>
-                        </div>
-                        <input type="number" id="numero" class="form-control">
-                        <input type="button" class="form-control btn btn-outline-success" value="Adicionar"
-                            id="adicionar">
-                        <input type="button" class="form-control btn btn-outline-success" value="Remover" id="remover">
-                        <input type="button" class="form-control btn btn-outline-success" value="Limpar" id="limpar">
-                    </div>
-                </div>
-
-                <div class="my-4">
-                    <div id="pilha">
-
-                    </div>
-                </div>
-
-                <!-- Bottom -->
-                <div class="fixed-bottom w-50 mx-auto text-center" style="z-index: -1;">
-                    <label>Velocidade da animação: </label>
-                    <input type="range" id="velocidade" min="-10" max="-1" step="0.5" value="-1">
-                </div>
-            </div>
-        </div>
+  <nav class="navbar navbar-dark bg-dark" style="background-color: #0f0f0f !important">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="_assets/arrow-left.svg" />
+        Visualiza Estruturas
+      </a>
+      <button id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+  </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <div class="sidebar">
+        <div id="codigo">
+
+        </div>
+      </div>
+    </div>
+    <div id="page-content-wrapper">
+      <div class="container">
+        <div class="alert alert-primary text-center" role="alert" id="alert">
+          <span class="message">Digite um número para ser inserido na pilha</span>
+        </div>
+
+        <!-- Formulário -->
+        <div class="form-inline justify-content-center my-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Número</span>
+            </div>
+            <input type="number" id="numero" class="form-control">
+            <input type="button" class="form-control btn btn-outline-success" value="Adicionar" id="adicionar">
+            <input type="button" class="form-control btn btn-outline-success" value="Remover" id="remover">
+            <input type="button" class="form-control btn btn-outline-success" value="Limpar" id="limpar">
+          </div>
+        </div>
+
+        <div class="my-4">
+          <div id="pilha">
+
+          </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="fixed-bottom w-50 mx-auto text-center" style="z-index: -1;">
+          <label>Velocidade da animação: </label>
+          <input type="range" id="velocidade" min="-10" max="-1" step="0.5" value="-1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
