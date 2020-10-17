@@ -3,7 +3,7 @@ package vetor
 
 data class Vetor (
         val TAMANHO:Int = 10,
-        val vetor:Array<Int?> = arrayOfNulls(TAMANHO)
+        val vetor:Array&lt;Int?&gt; = arrayOfNulls(TAMANHO)
 ) {
     fun inserir(valor:Int, indice:Int) {
         if(indice < TAMANHO) {

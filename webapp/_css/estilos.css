@@ -191,7 +191,8 @@ table td {
 .destaque {
     position: absolute;
     background-color: #111;
-    color: #f0f0f1;
+    font-weight: 700;
+    color: #dddddd;
     width: 100%;
     height: auto;
 
