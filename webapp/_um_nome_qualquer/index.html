@@ -14,14 +14,16 @@
 
     <link rel="stylesheet" href="styles.css">
 
-    <title>Code</title>
+    <title>Códigos</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container">
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="../index.html">Visualiza Estruturas</a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -39,7 +41,7 @@
 
     <div class="mt-2">
         <div class="container">
-            <div class="input-group w-25 ml-auto" id="languageSelection">
+            <div class="input-group w-100 ml-auto mt-4 mb-4" id="languageSelection">
                 <div class="input-group-prepend">
                     <div class="input-group-text" id="btnGroupAddon">Estrutura</div>
                 </div>
@@ -52,7 +54,7 @@
             </div>
             <pre class='code mt-2'>
                 <button class="btnCopy" id="copy">Copiar</button>
-                <code id="code">
+                <code id="code" class="p-4">
 package Java;
 
 public class Vetor {
@@ -143,7 +145,7 @@ public class Vetor {
             });
 
             $(window).resize(() => {
-                if(window.innerWidth < 768) {
+                if (window.innerWidth < 768) {
                     $('#languageSelection').removeClass('w-25');
                     $('#languageSelection').addClass('w-100');
                 } else {

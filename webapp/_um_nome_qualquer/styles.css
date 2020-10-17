@@ -61,7 +61,6 @@ pre.code {
 pre.code code {
     font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
     display: block;
-    margin-left: 50px;
     overflow-x: auto;
     font-size: .9rem;
     color: #dff9fb;

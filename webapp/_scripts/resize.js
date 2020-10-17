@@ -3,7 +3,7 @@ var resize = () => {
 		if(!document.getElementById('aviso')) {
             $('<div />', {
                 class: 'alert alert-danger my-2 mx-1',
-                html: 'Por questões visuais não é possível utilizar o aplicativo nessa resolução',
+                html: 'Por questões visuais não é possível utilizar a ferramenta nesse dispositivo',
                 id: 'aviso'
             }).appendTo('body');
         }

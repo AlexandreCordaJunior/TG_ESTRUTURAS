@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <script src="https://kit.fontawesome.com/c8bf600d07.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Início</title>
+
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(-45deg, #EE7752, #9b59b6, #23A6D5, #23D5AB);
+      background-size: 400% 400%;
+      position: relative;
+      animation: change 7s ease-in-out infinite;
+    }
+
+    .glass {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      display: block;
+      background-color: rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+    }
+
+    .card {
+      border-radius: 0px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      overflow: hidden;
+      transition: 0.1s;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      width: 100%;
+      border-radius: 0px;
+    }
+
+    @keyframes change {
+      0% {
+        background-position: 0 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0 50%;
+      }
+    }
+
+    .box-area li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 25px;
+      height: 25px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: animate 20s linear infinite;
+      bottom: 0px;
+    }
+
+    .box-area li:nth-child(1) {
+      left: 86%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+
+    .box-area li:nth-child(2) {
+      left: 12%;
+      width: 30px;
+      height: 30px;
+      animation-delay: 1.5s;
+      animation-duration: 10s;
+    }
+
+    .box-area li:nth-child(3) {
+      left: 70%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 5.5s;
+    }
+
+    .box-area li:nth-child(4) {
+      left: 70%;
+      width: 140px;
+      height: 140px;
+      animation-delay: 8s;
+    }
+
+    .box-area li:nth-child(4) {
+      left: 42%;
+      width: 120px;
+      height: 120px;
+      animation-delay: 8s;
+      animation-duration: 15s;
+    }
+
+    .box-area li:nth-child(5) {
+      left: 65%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 8s;
+    }
+
+    .box-area li:nth-child(6) {
+      left: 15%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 3.5s;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-800px) rotate(360deg);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-sm-6 col-md-6 col-lg-3">
+        <div class="card mb-2">
+          <div class="card-body">
+            <div class="glass"></div>
+            <i class="fas fa-2x fa-vector-square"></i>
+            <h5 class="my-3">Vetor</h5>
+            <p>Um vetor é uma estrutura de dados que armazena uma sequência de variaveis, todas do mesmo tipo.</p>
+            <hr class="bg-light">
+            <a href="vetor.html" class="btn btn-success">Ver demonstração</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-6 col-lg-3">
+        <div class="card mb-2">
+          <div class="card-body">
+            <div class="glass"></div>
+            <i class="fas fa-2x fa-link"></i>
+            <h5 class="my-3">Lista</h5>
+            <p>Numa lista encadeada, para cada novo elemento inserido na estrutura, alocamos um espaço de memória para
+              armazená-lo.</p>
+            <hr class="bg-light">
+            <a href="lista.html" class="btn btn-primary">Ver demonstração</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-6 col-lg-3">
+        <div class="card mb-2">
+          <div class="card-body">
+            <div class="glass"></div>
+            <i class="fas fa-2x fa-people-arrows"></i>
+            <h5 class="my-3">Fila</h5>
+            <p>Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos.
+            </p>
+            <hr class="bg-light">
+            <a href="fila.html" class="btn btn-danger">Ver demonstração</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-6 col-lg-3">
+        <div class="card mb-2">
+          <div class="card-body">
+            <div class="glass"></div>
+            <i class="fas fa-2x fa-layer-group"></i>
+            <h5 class="my-3">Pilha</h5>
+            <p>A idéia fundamental da pilha é que todo o acesso a seus elementos é feito através do seu topo.</p>
+            <hr class="bg-light">
+            <a href="pilha.html" class="btn btn-warning text-white">Ver demonstração</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="box-area">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

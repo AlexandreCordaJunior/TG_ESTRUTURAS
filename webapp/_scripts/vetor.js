@@ -68,7 +68,8 @@ $('document').ready(() => {
         circulo.id = 'circulo';
         document.body.appendChild(circulo);
 
-        var indice = $('#indice').val();
+        var indice = $('#indice').val() - 0;
+        console.log(indice)
         
         /* Pegando a posição inicial e final do circulo */
         var inicio = $('#numero').offset();
