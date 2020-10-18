@@ -74,8 +74,8 @@ async function add(velocidade, animation) {
 
     await destacaCodigo(velocidade, [5, 6, 7, 9, 10]);
 
-    var txtIndice = $('#indice').val();
-    var txtNumero = $('#numero').val();
+    var txtIndice = $('#indice').val() - 0;
+    var txtNumero = $('#numero').val() - 0;
 
     if ($('#indice').val() == 0) {
         $('#indice').prop('disabled', true);
@@ -88,7 +88,7 @@ async function add(velocidade, animation) {
         $('#lista > div').connections('remove');
 
         $('<div>', {
-            html: $('#numero').val(),
+            html: $('#numero').val() - 0,
             class: 'circulo'
         }).prependTo('#lista').hide().fadeIn().animate({
             'top': '0px'
@@ -134,7 +134,7 @@ async function add(velocidade, animation) {
         $('#lista > div').connections('remove');
 
         $('<div>', {
-            html: $('#numero').val(),
+            html: $('#numero').val() - 0,
             class: 'circulo'
         }).insertAfter(`#lista > div:nth-child(${$('#indice').val()})`).hide().fadeIn().animate({
             'top': '0px'
@@ -300,12 +300,14 @@ $('document').ready(() => {
         clean();
     });
 
-    var velocidade = 1000; // Velocidade padrão (1 segundo)
+    var velocidade = $('#velocidade').val() * -1000;
+    $('#txtvelocidade').text(`${velocidade / 1000}`);
+    
     var animation = false;
 
     $('#velocidade').change(() => {
-        velocidade = $('#velocidade').val() * -250;
-        /* $('#txtvelocidade').text($('#velocidade').val() * -1); */
+        velocidade = $('#velocidade').val() * -1000;
+        $('#txtvelocidade').text(`${velocidade / 1000}`);
     });
 
     $('#linguagem').change(() => {

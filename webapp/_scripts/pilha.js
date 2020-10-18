@@ -43,7 +43,7 @@ async function add(velocidade, animation) {
 
     await destacaCodigo(velocidade, [1, 2, 3, 4]);
 
-    var txtNumero = $('#numero').val();
+    var txtNumero = $('#numero').val() - 0;
 
     $('#numero').prop('disabled', true);
     $('#adicionar').prop('disabled', true);
@@ -54,7 +54,7 @@ async function add(velocidade, animation) {
     $('#pilha > div').connections('remove');
 
     $('<div />', {
-        html: $('#numero').val(),
+        html: $('#numero').val() - 0,
         class: 'circulo-pilha'
     }).prependTo('#pilha').hide().fadeIn().animate({
         'left': '0px'
@@ -72,6 +72,7 @@ async function add(velocidade, animation) {
                 }
             });
 
+            /* 
             if (!document.getElementById('head')) {
                 $('<span>', {
                     html: 'Head', id: 'head',
@@ -103,6 +104,8 @@ async function add(velocidade, animation) {
                     left: '50px'
                 }).appendTo('#pilha > div:last-child').hide().fadeIn();
             }
+
+            */
 
             $('#numero').prop('disabled', false);
             $('#adicionar').prop('disabled', false);
@@ -140,6 +143,7 @@ async function remove(velocidade, animation) {
             await destacaCodigo(velocidade, [4]);
             animation = true;
 
+            /*
             var length = $('#pilha > div').length;
             if (length == 1) {
                 $('#head').remove();
@@ -152,6 +156,7 @@ async function remove(velocidade, animation) {
             } else {
                 $('#head').appendTo(`#pilha > div:nth-child(2)`).hide().fadeIn();
             }
+            */
 
             $('#pilha > div').connections('remove');
 
@@ -227,12 +232,14 @@ $('document').ready(() => {
         clean();
     });
 
-    var velocidade = 1000; // Velocidade padrão (1 segundo)
+    var velocidade = $('#velocidade').val() * -1000;
+    $('#txtvelocidade').text(`${velocidade / 1000}`);
+
     var animation = false;
 
     $('#velocidade').change(() => {
         velocidade = $('#velocidade').val() * -1000;
-        /* $('#txtvelocidade').text($('#velocidade').val() * -1); <- exibe o valor atual na tela (removido temporariamente)*/
+        $('#txtvelocidade').text(`${velocidade / 1000}`);
     });
 
     $('#linguagem').change(() => {

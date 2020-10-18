@@ -26,11 +26,12 @@ $('document').ready(() => {
         $(`#v${i}`).html(Math.floor(Math.random() * 100));
     }
 
-    var velocidade = 1000;
+    var velocidade = $('#velocidade').val() * -1000;
+    $('#txtvelocidade').text(`${velocidade / 1000}`);
 
     $('#velocidade').change(() => {
         velocidade = $('#velocidade').val() * -1000;
-        $('#txtvelocidade').text($('#velocidade').val() * -1);
+        $('#txtvelocidade').text(`${velocidade / 1000}`);
     });
 
     $('#inserir').click(() => {
@@ -69,7 +70,6 @@ $('document').ready(() => {
         document.body.appendChild(circulo);
 
         var indice = $('#indice').val() - 0;
-        console.log(indice)
         
         /* Pegando a posição inicial e final do circulo */
         var inicio = $('#numero').offset();

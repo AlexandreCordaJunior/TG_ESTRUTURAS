@@ -42,7 +42,7 @@ async function add(velocidade, animation) {
 
     await destacaCodigo(velocidade, [1, 2, 3]);
 
-    var txtNumero = $('#numero').val();
+    var txtNumero = $('#numero').val() - 0;
 
     $('#numero').prop('disabled', true);
     $('#adicionar').prop('disabled', true);
@@ -51,7 +51,7 @@ async function add(velocidade, animation) {
     $('#velocidade').prop('disabled', true);
 
     $('<div />', {
-        html: $('#numero').val(),
+        html: $('#numero').val() - 0,
         class: 'circulo'
     }).appendTo('#fila').hide().fadeIn().animate({
         'top': '0px'
@@ -209,12 +209,14 @@ function clean() {
 }
 
 $('document').ready(() => {
-    var velocidade = 1000; // Velocidade padrão (1 segundo)
+    var velocidade = $('#velocidade').val() * -1000;
+    $('#txtvelocidade').text(`${velocidade / 1000}`);
+    
     var animation = false;
 
     $('#velocidade').change(() => {
         velocidade = $('#velocidade').val() * -1000;
-        /* $('#txtvelocidade').text($('#velocidade').val() * -1); <- exibe o valor atual na tela (removido temporariamente)*/
+        $('#txtvelocidade').text(`${velocidade / 1000}`);
     });
 
     $('#adicionar').click(() => {
