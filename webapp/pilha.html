@@ -51,11 +51,34 @@
         <img src="_assets/arrow-left.svg" />
         Visualiza Estruturas
       </a>
-      <button id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Pilha</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Pilha é um estrutura de dados que permite a inserção de elementos no começo da pilha e a remoção destes no começo (L.I.F.O.)</p>
+              <p>Esta estrutura se comporta de maneira similar a uma pilha de pratos, onde o último prato a ser colocado na pilha será o primeiro a ser removído.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Button trigger modal -->
+      <div class="d-flex align-items-center justify-content-around">
+        <button type="button" class="btn btn-primary mr-4" data-toggle="modal" data-target="#exampleModal">
+          Explicação da Estrutura
+        </button>
+        <button id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
